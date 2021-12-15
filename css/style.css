@@ -1,0 +1,53 @@
+.contenedor{padding-left:10px;}
+.Eleccion{background-color:#ffffc6;}
+
+ .spTitulo{
+	 border-radius:5px;
+	 animation:myfirst 5s;
+	-moz-animation:myfirst 5s infinite; /* Firefox */
+	-webkit-animation:myfirst 5s infinite; /* Safari and Chrome */
+ }
+ 
+ @-moz-keyframes myfirst /* Firefox */ {
+	0% {
+		background: #e6fb97;
+		color: black;
+	}
+
+	50% {
+		background: #fdfd56;
+		color: #4e4e4e;
+	}
+	100% {
+		background: #e6fb97;
+		color: black;
+	}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */ {
+	0% {
+		background: #e6fb97;
+		color: black;
+	}
+
+	50% {
+		background: #fdfd56;
+		color: #4e4e4e;
+	}
+	100% {
+		background: #e6fb97;
+		color: black;
+	}
+}
+
+span#txGan {
+    padding-left: 20px;
+}
+
+li {
+    font-size: 20px;
+}
+
+h1{
+	color: #008080;
+}
