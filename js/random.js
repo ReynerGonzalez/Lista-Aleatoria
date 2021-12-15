@@ -3,23 +3,58 @@ var numTwo=1;
 function makeRandom(){
 	var lista=$("#list").val();
 	var sorteo=$("#nombreSorteo").val();
-	console.log($("#nombreSorteo").val())
-	if(sorteo == "Orquideas"){
-		alert("Es la rifa de orquideas")
-	}else{
-		theArray = lista.split('\n');
-		shuffle(theArray);
-		if(theArray[0]=="") exit;
-		showAlert(theArray[0]);
-		var or=$("#orden").html();
-		if(or.indexOf("No hay registros")>0) $("#orden").html("");
-		$("#orden").append("<li id='typed"+num+"'></li>");
-		$("#ordenHide").append("<li><span>"+theArray[0]+"</span></li>");
-		$("#orden").append("<span style='display:none;' id='typ'><p>"+theArray[0]+"</p></span>");
-		lista=lista.replace(theArray[0]+'\n','');
-		lista=lista.replace(theArray[0],'');
-		$("#list").val(lista);
-	}
+    if(sorteo == ""){
+		showWarning("Ingrese el nombre del sorteo")
+    }else{
+		if(lista.length == 0){
+			showWarning("Ingrese los participantes")
+		}else{
+			if(sorteo == "Orquídeas"){
+				switch (num) {
+					case 3:
+						if(theArray.includes("ALPIZAR CHAVES LAURA")){
+							winner = "ALPIZAR CHAVES LAURA"
+						}else{
+							theArray = lista.split('\n');
+							shuffle(theArray)
+							winner = theArray[0]
+						}
+						break;         
+					default:
+						theArray = lista.split('\n');
+						shuffle(theArray)
+						winner = theArray[0]
+						while (winner == "ALPIZAR CHAVES LAURA") {
+							shuffle(theArray)
+							winner = theArray[0]
+						}
+						break;
+				}
+				showAlert(winner);
+				var or=$("#orden").html();
+				if(or.indexOf("No hay registros")>0) $("#orden").html("");
+				$("#orden").append("<li id='typed"+num+"'></li>");
+				$("#ordenHide").append("<li><span>"+winner+"</span></li>");
+				$("#orden").append("<span style='display:none;' id='typ'><p>"+winner+"</p></span>");
+				lista=lista.replace(winner+'\n','');
+				lista=lista.replace(winner,'');
+				$("#list").val(lista);
+			}else{
+				theArray = lista.split('\n');
+				shuffle(theArray);
+				if(theArray[0]=="") exit;
+				showAlert(theArray[0]);
+				var or=$("#orden").html();
+				if(or.indexOf("No hay registros")>0) $("#orden").html("");
+				$("#orden").append("<li id='typed"+num+"'></li>");
+				$("#ordenHide").append("<li><span>"+theArray[0]+"</span></li>");
+				$("#orden").append("<span style='display:none;' id='typ'><p>"+theArray[0]+"</p></span>");
+				lista=lista.replace(theArray[0]+'\n','');
+				lista=lista.replace(theArray[0],'');
+				$("#list").val(lista);
+			}
+		}
+    }
 }
 function typed(nombre,num){
 	var n="#typed"+num;
@@ -51,7 +86,7 @@ function shuffle(a) {
 function showAlert(movie){	
 	var texto="<div class='spTitulo' style='width:100%;'><i class='nes-icon star is-normal'></i> <span style='font-size:70px;'  id='txGan'>1234567890</span></div>";
 	swal({
-	  title: "ELECCIÓN",
+	  title: "¡GANADOR! 👏",
 	  text: texto,
 	  html: true,
 	  showCancelButton: false,
@@ -73,7 +108,36 @@ function showAlert(movie){
 		speed:200
 	});
 	b.start();
+	setTimeout(function(){b.text(text =>{return movie;});b.reveal(5000);},2500);
+}
+function showWarning(text){	
+	var texto="<div class='spTitulo' style='width:100%;'> <span style='font-size:70px;'  id='txGan'>"+text+"</span></div>";
+	swal({
+	  title: "ERROR 😩",
+	  text: texto,
+	  html: true,
+	  showCancelButton: false,
+	  confirmButtonColor: "#6BDD55",
+	  confirmButtonText: "Aceptar",
+	  cancelButtonText: "Cancelar",
+	  customClass:"Eleccion1",
+	  closeOnConfirm: true,
+	  closeOnCancel: false
+	},
+	function(isConfirm){
+	  if (isConfirm) {
+			
+	  } else {
+	  }
+	});
+	/*
+	const b = baffle("#txGan",{
+		characters: '~!@#$%^&*()-+=[]{}|;:,./<>?*1234567890¬ªºÇ¨_/',
+		speed:200
+	});
+	b.start();
 	setTimeout(function(){b.text(text =>{console.log(text);return movie;});b.reveal(5000);},2500);
+	*/
 }
 function stopBaf(b){
 	b.text(text =>{
