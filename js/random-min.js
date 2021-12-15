@@ -80,7 +80,7 @@ function shuffle(a) {
 function showAlert(movie){	
 	var texto="<div class='spTitulo' style='width:100%;'><i class='nes-icon star is-normal'></i> <span style='font-size:70px;'  id='txGan'>1234567890</span></div>";
 	swal({
-	  title: "GANADOR",
+	  title: "¡GANADOR! 👏",
 	  text: texto,
 	  html: true,
 	  showCancelButton: false,

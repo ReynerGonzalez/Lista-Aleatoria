@@ -1,5 +1,5 @@
 .contenedor{padding-left:10px;}
-.Eleccion{background-color:#ffffc6;}
+.Eleccion{background-color:#32CD32;}
 
  .spTitulo{
 	 border-radius:5px;
@@ -49,7 +49,7 @@ li {
 }
 
 h1{
-	color: #008080;
+	color: #32CD32;
 }
 
 input#nombreSorteo {
