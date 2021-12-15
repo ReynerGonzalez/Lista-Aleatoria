@@ -51,3 +51,15 @@ li {
 h1{
 	color: #008080;
 }
+
+input#nombreSorteo {
+    width: 100%;
+}
+
+textarea#list {
+    width: 100% !important;
+}
+
+ol#orden {
+    border: 1px solid;
+}

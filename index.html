@@ -20,17 +20,19 @@
 		</div>
 		<div class='contenedor' style='width:29%; display:inline-block; vertical-align:top; height:80%;'>
 			<div>
-				<h1>Nombre del sorteo</h1>
+				<h1>Nombre del sorteo 🎁</h1>
 				<label for="nombreSorteo">Nombre:</label>
 				<input id="nombreSorteo" required="true"></input>
-				<h1>Lista de participantes</h1><br>
+				<h1>Lista de participantes 😉</h1>
 				<span>Ingrese los nombres de participantes:</span>
+				<br>
 				<textarea id='list' style='width:350px; height:80%;' onchange="checkMovies($(this).val())" required="true"></textarea>
 			</div>
 			<button type="button" style='font-family: "Press Start 2P"; margin-top:10px;' class="nes-btn is-success" onclick='makeRandom()'>¡Sortear!</button>
 		</div>
-		<div class='contenedor' style='width:69%;display:inline-block; vertical-align:top;'>
-			<h1>Ganadores</h1>
+		<div class='contenedor' style='width:69%;display:inline-block; vertical-align:top'>
+			<h1>Ganadores 🥳</h1>
+			<span>¡Felicidades a los ganadores!</span>
 			<ol id='orden'></ol>
 			<ol id='ordenHide' style='display:none;'></ol>
 		</div>

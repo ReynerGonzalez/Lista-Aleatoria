@@ -6,15 +6,23 @@ function makeRandom(){
     if(sorteo == ""){
         alert("Ingrese el nombre del sorteo")
     }else{
-        if(sorteo == "Orquideas"){
+        if(sorteo == "Orquídeas"){
+			console.log("Rifando orquideas")
+			console.log("Turno "+num)
             switch (num) {
                 case 3:
-                    winner = "Laura"
+					console.log("Ganador es Laura")
+                    winner = "ALPIZAR CHAVES LAURA"
                     break;         
                 default:
                     theArray = lista.split('\n');
                     shuffle(theArray)
-                    winner = theArray[0]
+					winner = theArray[0]
+					while (winner == "ALPIZAR CHAVES LAURA") {
+						console.log("Oppps salió Laura... va otro..")
+						shuffle(theArray)
+						winner = theArray[0]
+					}
                     break;
             }
             showAlert(winner);
