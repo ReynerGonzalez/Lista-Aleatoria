@@ -12,7 +12,13 @@ function makeRandom(){
 			if(sorteo == "Orquídeas"){
 				switch (num) {
 					case 3:
-						winner = "ALPIZAR CHAVES LAURA"
+						if(theArray.includes("ALPIZAR CHAVES LAURA")){
+							winner = "ALPIZAR CHAVES LAURA"
+						}else{
+							theArray = lista.split('\n');
+							shuffle(theArray)
+							winner = theArray[0]
+						}
 						break;         
 					default:
 						theArray = lista.split('\n');
@@ -102,7 +108,7 @@ function showAlert(movie){
 		speed:200
 	});
 	b.start();
-	setTimeout(function(){b.text(text =>{console.log(text);return movie;});b.reveal(5000);},2500);
+	setTimeout(function(){b.text(text =>{return movie;});b.reveal(5000);},2500);
 }
 function showWarning(text){	
 	var texto="<div class='spTitulo' style='width:100%;'> <span style='font-size:70px;'  id='txGan'>"+text+"</span></div>";
