@@ -9,85 +9,21 @@ function makeRandom(){
 		if(lista.length == 0){
 			showWarning("Ingrese los participantes")
 		}else{
-            theArray = lista.split('\n');
-			if(sorteo == "Orquídeas"){
-				switch (num) {
-					case 3:
-						if(theArray.includes("ALPIZAR CHAVES LAURA")){
-							winner = "ALPIZAR CHAVES LAURA"
-						}else{
-							theArray = lista.split('\n');
-							shuffle(theArray)
-							winner = theArray[0]
-						}
-						break;         
-					default:
-						shuffle(theArray)
-						winner = theArray[0]
-						while (winner == "ALPIZAR CHAVES LAURA") {
-							shuffle(theArray)
-							winner = theArray[0]
-						}
-						break;
-				}
-				showAlert(winner);
+				theArray = lista.split('\n');
+				shuffle(theArray);
+				if(theArray[0]=="") exit;
+				showAlert(theArray[0]);
 				var or=$("#orden").html();
 				if(or.indexOf("No hay registros")>0) $("#orden").html("");
 				$("#orden").append("<li id='typed"+num+"'></li>");
-				$("#ordenHide").append("<li><span>"+winner+"</span></li>");
-				$("#orden").append("<span style='display:none;' id='typ'><p>"+winner+"</p></span>");
-				lista=lista.replace(winner+'\n','');
-				lista=lista.replace(winner,'');
+				$("#ordenHide").append("<li><span>"+theArray[0]+"</span></li>");
+				$("#orden").append("<span style='display:none;' id='typ'><p>"+theArray[0]+"</p></span>");
+				lista=lista.replace(theArray[0]+'\n','');
+				lista=lista.replace(theArray[0],'');
 				$("#list").val(lista);
-			}else{
-				if(sorteo == "Rifa 2"){
-					switch (num) {
-						case 0:
-							if(theArray.includes("LEIVA OROZCO KARLA")){
-								winner = "LEIVA OROZCO KARLA"
-							}else{
-								theArray = lista.split('\n');
-								shuffle(theArray)
-								winner = theArray[0]
-							}
-							break;         
-						default:
-							theArray = lista.split('\n');
-							shuffle(theArray)
-							winner = theArray[0]
-							while (winner == "LEIVA OROZCO KARLA") {
-								shuffle(theArray)
-								winner = theArray[0]
-							}
-							break;
-					}
-					showAlert(winner);
-					var or=$("#orden").html();
-					if(or.indexOf("No hay registros")>0) $("#orden").html("");
-					$("#orden").append("<li id='typed"+num+"'></li>");
-					$("#ordenHide").append("<li><span>"+winner+"</span></li>");
-					$("#orden").append("<span style='display:none;' id='typ'><p>"+winner+"</p></span>");
-					lista=lista.replace(winner+'\n','');
-					lista=lista.replace(winner,'');
-					$("#list").val(lista);
-				}else{
-					theArray = lista.split('\n');
-					shuffle(theArray);
-					if(theArray[0]=="") exit;
-					showAlert(theArray[0]);
-					var or=$("#orden").html();
-					if(or.indexOf("No hay registros")>0) $("#orden").html("");
-					$("#orden").append("<li id='typed"+num+"'></li>");
-					$("#ordenHide").append("<li><span>"+theArray[0]+"</span></li>");
-					$("#orden").append("<span style='display:none;' id='typ'><p>"+theArray[0]+"</p></span>");
-					lista=lista.replace(theArray[0]+'\n','');
-					lista=lista.replace(theArray[0],'');
-					$("#list").val(lista);
-				}
 			}
 		}
     }
-}
 function typed(nombre,num){
 	var n="#typed"+num;
 	var typed = new Typed(n,{
