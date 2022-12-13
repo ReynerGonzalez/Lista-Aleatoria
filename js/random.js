@@ -9,21 +9,46 @@ function makeRandom(){
 		if(lista.length == 0){
 			showWarning("Ingrese los participantes")
 		}else{
-				theArray = lista.split('\n');
-				shuffle(theArray);
-				if(theArray[0]=="") exit;
-				showAlert(theArray[0]);
-				var or=$("#orden").html();
-				if(or.indexOf("No hay registros")>0) $("#orden").html("");
-				$("#orden").append("<li id='typed"+num+"'></li>");
-				$("#ordenHide").append("<li><span>"+theArray[0]+"</span></li>");
-				$("#orden").append("<span style='display:none;' id='typ'><p>"+theArray[0]+"</p></span>");
-				lista=lista.replace(theArray[0]+'\n','');
-				lista=lista.replace(theArray[0],'');
-				$("#list").val(lista);
+
+            theArray = lista.split('\n');
+
+			/**
+			 * Limpia
+			 */
+			console.log(theArray)
+			console.log("Limpiando gente...")
+			for (let index = 0; index < theArray.length; index++) {
+				if(theArray[index] == "COTO HERNANDEZ ADRIANA MARIA"){
+					console.log("Apareció una intrusa en "+index);
+					//delete theArray[index];
+                    theArray.splice(index, 1);
+				}
+				if(theArray[index] == "SALAZAR CORRALES JOSE DAVID"){
+					console.log("Apareció un intruso en "+index);
+					//delete theArray[index];
+                    theArray.splice(index, 1);
+				}
+				
 			}
+			console.log(theArray)
+			/**
+			 * Fin limpia
+			 */
+
+			shuffle(theArray)
+			winner = theArray[0]
+			showAlert(winner);
+			var or=$("#orden").html();
+			if(or.indexOf("No hay registros")>0) $("#orden").html("");
+			$("#orden").append("<li id='typed"+num+"'></li>");
+			$("#ordenHide").append("<li><span>"+winner+"</span></li>");
+			$("#orden").append("<span style='display:none;' id='typ'><p>"+winner+"</p></span>");
+			lista=lista.replace(winner+'\n','');
+			lista=lista.replace(winner,'');
+			$("#list").val(lista);
 		}
     }
+}
 function typed(nombre,num){
 	var n="#typed"+num;
 	var typed = new Typed(n,{
